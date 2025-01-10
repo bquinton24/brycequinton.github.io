@@ -1,1 +1,0 @@
-# brycequinton.github.io
