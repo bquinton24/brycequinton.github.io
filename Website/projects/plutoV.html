@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Pluto V - Bryce Quinton</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <style>
+        /* Full-page background image */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('../images/thumbs/L1takeoff.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        /* Layout container */
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        /* Left section for pictures */
+        .left-section {
+            flex: 1;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .left-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Central section for content */
+        .content-box {
+            flex: 2;
+            background: rgba(0, 0, 0, 0.8); /* Transparent black background */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-box h1, .content-box h2 {
+            text-align: center;
+        }
+
+        .content-box ul {
+            padding-left: 20px;
+        }
+
+        /* Right section for PDF links */
+        .right-section {
+            flex: 1;
+            margin-left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .right-section h3 {
+            text-align: center;
+        }
+
+        .right-section a {
+            color: #00aced;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .right-section a:hover {
+            text-decoration: underline;
+        }
+ul li {
+        margin-bottom: 20px; /* Adjust this value for more or less spacing */
+    }
+
+.content-box h2 {
+        margin-top: 40px; /* Space above each heading */
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Layout Container -->
+    <div class="container">
+
+        <!-- Left Section: Pictures -->
+        <div class="left-section">
+            <img src="../images/plutoV/L1OR.png" alt="F-35 Engine Actuation Pump" />
+	    <img src="../images/plutoV/simplot.png" alt="F-35 Engine Actuation Pump" />
+		 <img src="../images/plutoV/wall.jpg" alt="F-35 Engine Actuation Pump" />
+        </div>
+
+        <!-- Central Section: Content -->
+        <div class="content-box">
+
+	<div class="button-container">
+        <button class="button" onclick="window.location.href='../index.html';">Home</button>
+        <button class="button" onclick="window.location.href='../profile.html';">Full Profile</button>
+  	</div>
+
+            <h1>Pluto V</h1>
+
+            <h2>Overview</h2>
+            <p>
+                L1 certification flight through Tripoli Wisconsin.
+            </p>
+
+            <h2>Goals</h2>
+            <ul>
+		<li>Assemble L1 rocketry kit.</li>
+                <li>Simulate flight characteristics.</li>
+                <li>Launch rocket to obtain L1 certification in high powered rockety.</li>
+            </ul>
+
+            <h2>Key Accomplishments</h2>
+            <ul>
+                <li><strong>Open Rocket:</strong> Utilized Open Rocket to virtually build the rocket and simulate with built-in software.</li>
+		<li><strong>Launch and Recovery:</strong> Successfully launched Pluto V for it's first flight, executed parachute deployment, and recovered. Fulfilling L1 Certification requirements per Tripoli Wisconsin.</li>
+           
+            </ul>
+        </div>
+
+        <!-- Right Section: PDF Links -->
+        <div class="right-section">
+            <h3>Supplementary Documents</h3>
+
+        </div>
+    </div>
+
+</body>
+</html>
