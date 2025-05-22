@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Collins Aerospace – Bryce Quinton</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner"></div>
+				<br><br><br><br><br><br><br><br><br><br>
+				<h4 class="quote" style="font-size: 1.2em; color: white; font-style: italic; margin-top: 8rem;">
+					“We choose to go to the Moon in this decade and do the other things, not because they are easy, but because they are hard.”  
+					– John F. Kennedy
+				</h4>
+				<ul class="icons" style="margin-top: 0.25rem;">
+					<li><a href="mailto:brycequinton24@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					<li><a href="https://www.linkedin.com/in/bryce-quinton-5b4b1627b" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://twitter.com/bquinton24" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				</ul>
+			</div>
+		</header>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Project Header -->
+			<section id="one">
+				<a href="../index.html" class="button" style="margin-bottom: -10rem; align-self: flex-start; position: relative; top: -6rem;">Home</a>
+				<div class="work-item" style="display: flex; flex-direction: column; align-items: center; margin-top: 0;">
+					<img src="..\images\tvc\gimbalMount.png" alt="F-35 Engine Actuation Pump" style="width: 80%; max-width: 1000px; height: auto; border-radius: 8px; margin-bottom: 1rem; margin-top: 0;" />
+					<h1 style="text-align: center; color: #333333; margin-bottom: 0.5rem;">Thrust Vector Control</h1>
+					<h3 style="text-align: center; color: #333333; margin-top: 0;"> C++ PID controller, simulated in MATLAB, and implemented to flight hardware</h3>
+				</div>
+
+				<header class="major">
+					<h2>Overview</h2>
+				</header>
+
+				<p>
+					The thrust vector control (TVC) project set out to design, implement, and validate a two‐axis gimbal system for a small, high‐power rocket, with the overarching goal of achieving precise attitude stability throughout the ascent phase of flight. Key considerations included maintaining structural integrity under dynamic loads, minimizing added mass, ensuring mechanical compatibility with the existing airframe, and achieving responsive actuation within a ±8° deflection envelope.
+				</p>
+				<p>
+					To meet these requirements, a 2-axis gimbal mount was developed to integrate directly with the aft body‐tube coupler of the avionics bay, providing accurate alignment of the motor nozzle with the rocket’s center of mass while accommodating the required control torques. Mechanically, the gimbal mount was engineered to house two orthogonal axes of rotation—inner (pitch) and outer (yaw)—driven by standard hobby servos. Finite‐element considerations guided material selection and mounting geometry to resist bending moments at peak thrust, while precision machining defined the bearing seats and linkage interfaces to limit friction and backlash. A maximum gimbal angle of 8° was imposed both by mechanical design and control safety limits, with the neutral 1500 μs servo PWM corresponding to 0° and a mapping of ±10° per 1000 μs span implemented in software.
+				</p>
+				<p>
+					On the software side, the flight‐computer logic was developed in C++ as a robust state machine executing at 100 Hz. Incoming sensor data—including body‐frame accelerations, linear accelerations, and angular rates—are first smoothed via digital Butterworth filters (cutoff 5 Hz, sampling rate 100 Hz), implemented in ButterworthFilter.h and applied in the MEX interface of main_MATLAB.cpp. Subsequent processing transforms accelerations into the inertial frame via quaternion rotations, estimates velocity through Euler integration, and computes aerodynamic drag and thrust forces. Mass loss is modeled by decremental integration, which in turn updates the transverse moment of inertia to capture changing dynamics. Attitude control employs a quaternion‐based PID scheme—scaling proportional, integral, and derivative terms by a physical coefficient K = T*r/I—to generate a desired gimbal quaternion. Finally, computeServoPwms() converts this quaternion into inner and outer servo PWM commands, ensuring outputs remain within the mechanically safe ±8° range.
+				</p>
+
+				<div class="work-item" style="text-align: center;">
+						<img src="../images/tvc/pwm_sim.png" alt="F-35 Engine Actuation Pump" style="max-width: 80%; border-radius: 8px;" />
+						<div class="caption" style="margin-top: 0.5rem;">
+							<span>PWM output (microseconds) vs time plot of simulation with exagerated sensor noise and flight distrubances.</span>
+						</div>
+				</div>
+
+				<p>
+					Prior to hardware testing, the entire control algorithm was validated in a MATLAB Simulink environment using the Aerospace Blockset’s 6-DoF quaternion block. The simulation architecture comprised three subsystems—rigid‐body dynamics, noise generation, and the flight computer—interconnected to emulate real‐world sensor noise, thrust profiles (from Aerotech I59WN-P motor data), and servo response. Quaternion kinematics, Newton’s translational and Euler rotational equations, and the gimbal mapping were all propagated through fixed‐step ODE solvers. Iterative tuning of filter parameters and PID gains in Simulink ensured stable attitude tracking and rapid disturbance rejection before proceeding to physical integration.
+				</p>
+
+				<div class="work-item" style="text-align: center;">
+						<img src="../images/tvc/simulink.png" alt="F-35 Engine Actuation Pump" style="max-width: 100%; border-radius: 8px;" />
+						<div class="caption" style="margin-top: 0.5rem;">
+							<span>Full flight simulation model in Simulink.</span>
+						</div>
+				</div>
+
+				<div style="display: flex; gap: 1rem; margin-top: 2rem;"></div>
+					<a href="../assets/pdf/TVC_Report.pdf" target="_blank" class="button">Full Technical Report</a>
+					<a href="../index.html" class="button">Back to Home</a>
+				</div>
+				</section>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/jquery.poptrox.min.js"></script>
+		<script src="../assets/js/browser.min.js"></script>
+		<script src="../assets/js/breakpoints.min.js"></script>
+		<script src="../assets/js/util.js"></script>
+		<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
